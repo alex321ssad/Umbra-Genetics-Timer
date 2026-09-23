@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UMBRA GENETICS — Operations Terminal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- AUDIO -->
+  <audio id="key1" src="key1.mp3" preload="auto"></audio>
+  <audio id="key2" src="key2.mp3" preload="auto"></audio>
+  <audio id="beep" src="bip.mp3" preload="auto"></audio>
+  <audio id="intro" src="intro.mp3" preload="auto"></audio>
+  <audio id="outro" src="outro.mp3" preload="auto"></audio>
+
+  <!-- TEST:
+       complete intentionally uses intro.mp3.
+       If this sound plays when the timer reaches zero,
+       the JavaScript works and timer_complete.mp3 is the problem. -->
+  <audio id="complete" src="intro.mp3" preload="auto"></audio>
+
+
+  <!-- BOOT SCREEN -->
+  <section id="bootScreen" class="screen">
+    <div class="boot-panel">
+      <div class="boot-title">UMBRA GENETICS</div>
+      <div class="boot-subtitle">OPERATIONS TERMINAL</div>
+
+      <div class="boot-line">SECURE SYSTEM INITIALIZATION</div>
+      <div class="boot-line">GENETIC ARCHIVE: ONLINE</div>
+      <div class="boot-line">BIOLOGICAL SYSTEMS: STANDBY</div>
+
+      <button id="initializeBtn">INITIALIZE</button>
+
+      <div class="boot-status">SYSTEM STANDBY</div>
+    </div>
+  </section>
+
+
+  <!-- MAIN APP -->
+  <section id="appScreen" class="screen hidden">
+
+    <header class="topbar">
+      <div>
+        <div class="brand">UMBRA GENETICS</div>
+        <div class="terminal-label">OPERATIONS TERMINAL</div>
+      </div>
+
+      <div id="clock">00:00:00</div>
+    </header>
+
+
+    <main class="terminal">
+
+      <!-- MODE SELECT -->
+      <div class="mode-row">
+        <button class="mode active" data-mode="countdown">COUNTDOWN</button>
+        <button class="mode" data-mode="timer">STOPWATCH</button>
+        <button class="mode" data-mode="alarm">ALARM</button>
+      </div>
+
+
+      <!-- DISPLAY -->
+      <section class="display-panel">
+
+        <div class="display-header">
+          <span>MODE</span>
+          <span id="modeLabel">COUNTDOWN</span>
+        </div>
+
+        <div id="display">05:00</div>
+
+        <div class="progress">
+          <div id="progressBar"></div>
+        </div>
+
+        <div id="statusLine">SYSTEM READY</div>
+
+      </section>
+
+
+      <!-- COUNTDOWN CONTROLS -->
+      <section id="countdownControls" class="controls">
+
+        <div class="input-row">
+
+          <label>
+            MINUTES
+            <input id="minutes" type="number" min="0" max="999" value="5">
+          </label>
+
+          <label>
+            SECONDS
+            <input id="seconds" type="number" min="0" max="59" value="0">
+          </label>
+
+        </div>
+
+
+        <div class="presets">
+          <button data-min="1">01:00</button>
+          <button data-min="5">05:00</button>
+          <button data-min="10">10:00</button>
+          <button data-min="15">15:00</button>
+          <button data-min="30">30:00</button>
+          <button data-min="60">60:00</button>
+        </div>
+
+      </section>
+
+
+      <!-- STOPWATCH CONTROLS -->
+      <section id="timerControls" class="controls hidden">
+        <div class="timer-info">
+          STOPWATCH MODE
+        </div>
+      </section>
+
+
+      <!-- ALARM CONTROLS -->
+      <section id="alarmControls" class="controls hidden">
+
+        <label>
+          TARGET TIME
+          <input id="alarmTime" type="time">
+        </label>
+
+      </section>
+
+
+      <!-- MAIN BUTTONS -->
+      <div class="button-row">
+
+        <button id="startBtn">START</button>
+        <button id="pauseBtn" disabled>PAUSE</button>
+        <button id="resetBtn">RESET</button>
+
+      </div>
+
+
+      <!-- LOG -->
+      <section class="log-panel">
+
+        <div class="log-title">SYSTEM LOG</div>
+
+        <div id="log"></div>
+
+      </section>
+
+
+      <!-- SHUTDOWN -->
+      <button id="shutdownBtn" class="shutdown">
+        SHUTDOWN TERMINAL
+      </button>
+
+    </main>
+
+  </section>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
